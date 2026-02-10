@@ -1,26 +1,27 @@
 using System;
 
-namespace XDTGame.Core;
-
-/// <summary>
-/// The smaller the order value, the higher the priority
-/// </summary>
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-public sealed class OrderAttribute : Attribute
+namespace Vena
 {
-    public readonly int Order;
-    
-    public OrderAttribute(int order = 0)
+    /// <summary>
+    /// The smaller the order value, the higher the priority
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    public sealed class OrderAttribute : Attribute
     {
-        Order = order;
-    }
-}
+        public readonly int Order;
 
-/// <summary>
-/// the order of the life cycle method is reversed
-/// such as OnDisable, OnDestroy
-/// </summary>
-[AttributeUsage( AttributeTargets.Interface, Inherited = false, AllowMultiple = false )]
-public sealed class RevertOrderAttribute : Attribute
-{
+        public OrderAttribute(int order = 0)
+        {
+            Order = order;
+        }
+    }
+
+    /// <summary>
+    /// the order of the life cycle method is reversed
+    /// such as OnDisable, OnDestroy
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Interface, Inherited = false, AllowMultiple = false)]
+    public sealed class RevertOrderAttribute : Attribute
+    {
+    }
 }

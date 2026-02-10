@@ -6,9 +6,8 @@
 //****************************************************************************
 
 using System;
-using XDFramework.Core;
 
-namespace XDTGame.Core
+namespace Vena
 {
     public readonly struct GcWatch : IDisposable
     {
@@ -20,28 +19,24 @@ namespace XDTGame.Core
 
         private static long m = k * k;
     
-        public GcWatch(in string log)
+        public GcWatch(string log)
         {
             _log = log;
-            _totalMemory = default;
-#if DEBUG_SYSTEM
             _totalMemory = GC.GetTotalMemory(true);
-#endif
         }
     
         void IDisposable.Dispose()
         {
-#if DEBUG_SYSTEM
             long totalByte = GC.GetTotalMemory(true) - _totalMemory;
             if (totalByte < k)
             {
-                DebugSystem.LogWarning( LogCategory.Framework,$"GcWatch_{_log} ( alloc {totalByte}B )"); 
+                UnityEngine.Debug.LogWarning( $"GcWatch_{_log} ( alloc {totalByte}B )"); 
             }
             else if( totalByte < m)
             {
                 long kCount = totalByte / k;
                 long bCount = totalByte % k;
-                DebugSystem.LogWarning( LogCategory.Framework,$"GcWatch_{_log} ( alloc {kCount}K/{bCount}B )"); 
+                UnityEngine.Debug.LogWarning($"GcWatch_{_log} ( alloc {kCount}K/{bCount}B )"); 
             }
             else
             {
@@ -49,9 +44,8 @@ namespace XDTGame.Core
                 totalByte %= m;
                 long kCount = totalByte / k;
                 long bCount = totalByte % k;
-                DebugSystem.LogWarning( LogCategory.Framework,$"GcWatch_{_log} ( alloc {mCount}M/{kCount}K/{bCount}B )"); 
+                UnityEngine.Debug.LogWarning($"GcWatch_{_log} ( alloc {mCount}M/{kCount}K/{bCount}B )"); 
             }
-#endif
         }
     }
 }

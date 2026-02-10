@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace XDTGame.Core;
-
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
-public sealed class InjectAttribute : Attribute
+namespace Vena
 {
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
+    public sealed class InjectAttribute : Attribute
+    {
+    }
 }

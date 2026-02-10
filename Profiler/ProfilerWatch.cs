@@ -6,22 +6,23 @@
 //****************************************************************************
 
 using System;
+using UnityEngine.Profiling;
 
-namespace XDTGame.Core
+namespace Vena
 {
     public readonly struct ProfilerWatch : IDisposable
     {
-        public ProfilerWatch(in string message)
+        public ProfilerWatch(string message)
         {
-#if DEBUG_SYSTEM && UNITY_EDITOR
-            UnityEngine.Profiling.Profiler.BeginSample(message);
+#if VENA_DEVELOP
+            Profiler.BeginSample(message);
 #endif
         }
         
         public void Dispose()
         {
-#if DEBUG_SYSTEM  && UNITY_EDITOR
-            UnityEngine.Profiling.Profiler.EndSample();
+#if VENA_DEVELOP
+            Profiler.EndSample();
 #endif
         }
     }

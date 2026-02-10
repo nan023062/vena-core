@@ -7,9 +7,8 @@
 
 using System;
 using System.Diagnostics;
-using XDFramework.Core;
 
-namespace XDTGame.Core
+namespace Vena
 {
     public readonly struct TimeWatch : IDisposable
     {
@@ -20,15 +19,19 @@ namespace XDTGame.Core
         public TimeWatch(string message)
         {
             _message = message;
+            
+            UnityEngine.Debug.Log($"[TimeWatch].Begin: {_message}");
+            
             _timestamp = Stopwatch.GetTimestamp();
         }
         
         public void Dispose()
         {
-#if DEBUG_SYSTEM
-            float ms = (Stopwatch.GetTimestamp() - _timestamp) / (float)Stopwatch.Frequency * 1000;
-            DebugSystem.LogWarning( LogCategory.Framework,$"[TimeWatch]{_message} : cost {ms} ms!");
-#endif
+            long ticks = Stopwatch.GetTimestamp() - _timestamp;
+            
+            float ms = (float)ticks / Stopwatch.Frequency * 1000f;
+            
+            UnityEngine.Debug.Log($"[TimeWatch].End: {_message} ------ {ms} ms!");
         }
     }
 }

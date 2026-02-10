@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace XDTGame.Core
+namespace Vena
 {
     public sealed class LinkedStack<T> : IEnumerable<T>
     {
