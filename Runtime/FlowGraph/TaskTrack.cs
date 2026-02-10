@@ -80,8 +80,8 @@ namespace Vena
     
     public sealed class TaskSequence : TaskTrack
     {
-        private Queue<ClipWrapper> _clips = new ();
-        private Queue<ClipWrapper> _finished = new ();
+        private Queue<ClipWrapper> _clips = new Queue<ClipWrapper>();
+        private Queue<ClipWrapper> _finished = new Queue<ClipWrapper>();
         
         private float _duration;
         private ClipWrapper _segment;
@@ -101,7 +101,7 @@ namespace Vena
             if (null != _segment)
                 throw new Exception("Can't add playable when track is playing");
 
-            ClipWrapper clipWrapper = new()
+            ClipWrapper clipWrapper = new ClipWrapper()
             {
                 startTime = _duration,
                 endTime = _duration + clip.duration,
@@ -187,7 +187,7 @@ namespace Vena
 
         private bool _started;
 
-        private readonly List<ClipWrapper> _clips = new();
+        private readonly List<ClipWrapper> _clips = new List<ClipWrapper>();
         
         public override bool CanInterrupted() 
         {
@@ -214,7 +214,7 @@ namespace Vena
             if (_started)
                 throw new Exception("Can't insert playable when track is playing");
             
-            ClipWrapper clipWrapper = new()
+            ClipWrapper clipWrapper = new ClipWrapper()
             {
                 startTime = time,
                 endTime = time + clip.duration,

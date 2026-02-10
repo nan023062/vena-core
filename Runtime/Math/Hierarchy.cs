@@ -56,7 +56,13 @@ namespace Vena.Math
         
         public override int GetHashCode()
         {
-            return HashCode.Combine(_radius, _position, _quaternion);
+            unchecked
+            {
+                var hashCode = _radius.GetHashCode();
+                hashCode = (hashCode * 397) ^ _position.GetHashCode();
+                hashCode = (hashCode * 397) ^ _quaternion.GetHashCode();
+                return hashCode;
+            }
         }
     }
 }

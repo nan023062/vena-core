@@ -122,7 +122,7 @@ namespace Vena
     /// </summary>
     public class SystemGroup : ISystem
     {
-        private readonly List<ISystem> _systems = new();
+        private readonly List<ISystem> _systems = new List<ISystem>();
         private IUpdateSystem[] _updateSystems;
         private ILateUpdateSystem[] _lateUpdateSystems;
 

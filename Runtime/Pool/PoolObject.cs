@@ -74,7 +74,7 @@ namespace Vena
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator bool(PoolObject obj)
         {
-            return obj is { token: > 0 };
+            return obj != null &&  obj.token > 0 ;
         }
 
         public abstract void Deconstruct();
@@ -413,7 +413,7 @@ namespace Vena
     {
         public static bool UsePool = true;
 
-        static readonly Dictionary<Type, IObjectPool> _pools = new();
+        static readonly Dictionary<Type, IObjectPool> _pools = new Dictionary<Type, IObjectPool>();
 
         const string POOL_INFO = "[ POOL_INFO ]: ";
 

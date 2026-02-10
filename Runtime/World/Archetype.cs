@@ -37,7 +37,7 @@ namespace Vena
 
         public override string ToString()
         {
-            StringBuilder sb = new();
+            StringBuilder sb = new StringBuilder();
             sb.Append($"Archetype_{bucket}_{index}:");
             foreach (var typeInfo in Archetype.GetTypes(this))
             {
@@ -215,10 +215,10 @@ namespace Vena
         static Archetype()
         {
             //using var _ = new TimeWatch(" ------- Archetype.ctor() ");
-            _types = new();
-            _hashSet = new();
+            _types = new List<TypeInfo>();
+            _hashSet = new HashSet<int>();
             _buckets = new Bucket[BucketCount];
-            _typeMap = new();
+            _typeMap = new Dictionary<Type, TypeWrap>();
         }
 
         public static class type<T>
@@ -268,7 +268,7 @@ namespace Vena
 
                 int order = attr?.Order ?? 0;
 
-                List<Type> dependencies = new();
+                List<Type> dependencies = new List<Type>();
                 foreach (var attribute in type.GetCustomAttributes<RequireAttribute>())
                 {
                     dependencies.AddRange(attribute.requireTypes);

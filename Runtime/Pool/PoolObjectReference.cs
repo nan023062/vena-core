@@ -31,7 +31,7 @@ namespace Vena
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator bool(Ref<T> wref)
         {
-            if (wref is { token: > 0, _impl: not null })
+            if (wref.token > 0 && wref._impl != null)
             {
                 int token = PoolManager.GetToken(wref._impl);
                 return wref.token == token;
@@ -106,7 +106,7 @@ namespace Vena
                 return wref._impl != null;
             }
 
-            if (wref is { token: > 0, _impl: not null })
+            if (wref.token > 0 && wref._impl != null)
             {
                 int token = PoolManager.GetToken<T, TArg>(wref._impl);
                 return wref.token == token;

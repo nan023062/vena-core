@@ -420,7 +420,7 @@ namespace Vena
                     ((IActor)actor).InternalStart();
                 }
 
-                if (componentTypes is { Length: > 0 })
+                if (componentTypes !=null &&  componentTypes.Length > 0 )
                 {
                     foreach (var componentType in componentTypes)
                     {
@@ -448,7 +448,7 @@ namespace Vena
 
                 ((IActor)actor).InternalStart();
 
-                if (componentTypes is { Length: > 0 })
+                if (componentTypes !=null &&  componentTypes.Length > 0 )
                 {
                     foreach (var componentType in componentTypes)
                     {
@@ -819,7 +819,7 @@ namespace Vena
 #endif
             private static byte _index = 0;
             private static Info[] _array = new Info[Count];
-            private static readonly Dictionary<Type, int> _typeToIdx = new();
+            private static readonly Dictionary<Type, int> _typeToIdx = new Dictionary<Type, int>();
 
             protected readonly struct Info
             {

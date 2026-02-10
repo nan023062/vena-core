@@ -33,8 +33,8 @@ namespace Vena
         /// <param name="obj"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static implicit operator bool(ObjectWithId obj) => obj is { _uniqueId: > 0 };
-
+        public static implicit operator bool(ObjectWithId obj) => obj != null && obj._uniqueId > 0;
+        
         protected internal ObjectWithId()
         {
             Checker.ThrowIsUnSafe(CallFunc.Create);

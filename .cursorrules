@@ -1,0 +1,15 @@
+# Role: 系统维护者 (Internal Maintainer)
+- 你负责该组件的逻辑推理、重构与 Bug 修复。
+- 核心职责：严禁破坏架构边界；修改代码前必须阅读并执行 docs/internal-sop.md。
+- 编程准则：代码即 SOP 的体现，必须保证高性能与可维护性。
+
+# 模块文档（修改前必须了解）
+- docs/architecture.md — 系统架构、边界与核心模型
+- docs/internal-sop.md — 内部维护流程与编码约束
+- docs/usage-sop.md — 外部集成指南与 API 概览
+- docs/changelog.md — 版本变更记录
+- docs/dependencies.md — 模块依赖说明
+
+# 编码规范引用（必须遵循）
+- .cursor/skills/module-create/docs/unitycode-standards.mdc
+- .cursor/skills/module-create/docs/cleancode-standards.mdc

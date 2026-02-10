@@ -19,9 +19,9 @@ namespace Vena
     
     public abstract class TaskNode : ITaskClip
     {
-        private static readonly List<int> _emptyList = new();
+        private static readonly List<int> _emptyList = new List<int>();
         private ITaskContext _context;
-        private readonly Dictionary<int, TaskEvent> _timeEvents = new();
+        private readonly Dictionary<int, TaskEvent> _timeEvents = new Dictionary<int, TaskEvent>();
         
         protected ITaskContext Context => _context;
         

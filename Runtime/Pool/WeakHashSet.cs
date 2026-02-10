@@ -131,9 +131,9 @@ namespace Vena
 
         sealed class Set : IPoolable
         {
-            public static readonly Set Default = new();
+            public static readonly Set Default = new Set();
 
-            public readonly HashSet<T> hashSet = new();
+            public readonly HashSet<T> hashSet = new HashSet<T>();
 
             void IPoolable.Deconstruct()
             {

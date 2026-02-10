@@ -2,7 +2,7 @@
 {
     public readonly struct JobResult
     {
-        public static JobResult Done = new(true);
+        public static JobResult Done = new JobResult(true);
 
         public readonly bool isDone;
         

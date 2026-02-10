@@ -6,7 +6,6 @@
 
 using System;
 using System.Collections.Generic;
-using XDFramework.Core;
 
 namespace XDTGame.Core
 {
@@ -302,7 +301,7 @@ namespace XDTGame.Core
                     _stateMap.TryGetValue(_currentTransition.Second, out var newState);
                     _currentTransition = null;
                     
-                    DebugSystem.Assert(LogCategory.GameLogic, newState != null);
+                    //DebugSystem.Assert(LogCategory.GameLogic, newState != null);
                     _SwitchState(newState);
                 }
             }

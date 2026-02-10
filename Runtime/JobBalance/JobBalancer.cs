@@ -34,9 +34,9 @@ namespace Vena
         
         private readonly Stopwatch _jobWatch;
         
-        private readonly PriorityQueue<JobExecutor> _queue = new(128);
+        private readonly PriorityQueue<JobExecutor> _queue = new PriorityQueue<JobExecutor>(128);
         
-        private readonly HashSet<ISteppedJob> _hashSet = new();
+        private readonly HashSet<ISteppedJob> _hashSet = new HashSet<ISteppedJob>();
 
         public int targetFrameRate
         {

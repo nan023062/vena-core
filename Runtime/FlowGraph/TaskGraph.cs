@@ -10,8 +10,8 @@ namespace Vena
     public class TaskGraph
     {
         public event Action<ITaskContext> onStartEvent, onReplayEvent, onEndEvent;
-        private readonly TaskParallel _parallelTrack = new();
-        private readonly TaskSequence _sequenceTrack = new();
+        private readonly TaskParallel _parallelTrack = new TaskParallel();
+        private readonly TaskSequence _sequenceTrack = new TaskSequence();
         private ITaskContext _context;
         private TaskNode _playableNode;
         private bool _isPlaying;
@@ -70,7 +70,7 @@ namespace Vena
             if (_context is IHasLogicEventClip keyEventAction)
             {
                 TaskEvent[] eventClips = keyEventAction.GetEvents();
-                if (eventClips is { Length: > 0 })
+                if (eventClips != null && eventClips.Length > 0 )
                 {
                     foreach (var eventClip in eventClips)
                         _playableNode.AddEvent(eventClip);
@@ -81,7 +81,7 @@ namespace Vena
             OnBeforePrepareGraph();
 
             // before action ...
-            List<TaskNode> tempList = new();
+            List<TaskNode> tempList = new List<TaskNode>();
             int length = GetBeforeActions(tempList);
             for (int i = 0; i < length; i++)
                 _sequenceTrack.Enqueue(tempList[i]);
