@@ -2,14 +2,34 @@
   "name": "com.vena.core",
   "version": "0.1.0",
   "displayName": "Vena Core",
-  "description": "Core utilities and runtime foundations for Vena.",
+  "description": "Core runtime foundation library for the Vena framework — engine-agnostic data structures, ECS-like World, BehaviourTree, FlowGraph, FSM, JobBalancer, math, pooling, serialization, and profiling.",
   "unity": "2020.3",
   "keywords": [
+    "vena",
     "core",
+    "ecs",
+    "behaviour-tree",
+    "flow-graph",
+    "fsm",
+    "job-balancer",
+    "object-pool",
+    "serialization",
+    "math",
     "utilities",
-    "vena"
+    "framework"
   ],
   "author": {
-    "name": "Vena"
-  }
+    "name": "nan023062",
+    "url": "https://github.com/nan023062"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nan023062/vena-core.git"
+  },
+  "homepage": "https://github.com/nan023062/vena-core",
+  "bugs": {
+    "url": "https://github.com/nan023062/vena-core/issues"
+  },
+  "license": "MulanPSL-2.0",
+  "dependencies": {}
 }

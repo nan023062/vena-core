@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    name: Validate Package Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check package.json
+        run: |
+          if [ ! -f "package.json" ]; then
+            echo "ERROR: package.json not found"
+            exit 1
+          fi
+          echo "package.json found"
+          cat package.json
+
+      - name: Check required files
+        run: |
+          files=("LICENSE" "README.md" "CHANGELOG.md" "Runtime/Vena.Core.asmdef")
+          for f in "${files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: required file missing: $f"
+              exit 1
+            fi
+            echo "OK: $f"
+          done
+
+      - name: Validate package.json fields
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            const required = ['name','version','displayName','description','unity','repository','author'];
+            required.forEach(k => {
+              if (!pkg[k]) { console.error('Missing field: ' + k); process.exit(1); }
+              console.log('OK: ' + k + ' = ' + JSON.stringify(pkg[k]));
+            });
+          "
