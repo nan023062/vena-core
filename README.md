@@ -138,3 +138,17 @@ pool.Return(obj);
 ## License
 
 本项目使用 [木兰宽松许可证 v2 (MulanPSL-2.0)](LICENSE)。
+
+---
+
+## AI 记忆索引（MCP Index）
+
+> 供 AI Agent 快速定位上下文，无需阅读此段。
+
+| 文件 | 用途 |
+|------|------|
+| `.dna/architecture.md` | 程序集定位、核心模型、Public API、设计决策 |
+| `.dna/pitfalls.md` | 历史踩坑记录 |
+| `.dna/changelog.md` | 版本变更记录 |
+| `.dna/dependencies.md` | 依赖声明（本包无外部依赖） |
+| `.dna/wip.md` | 进行中任务 |
